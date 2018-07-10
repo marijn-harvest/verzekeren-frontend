@@ -9,7 +9,7 @@ export class APIService {
   
   constructor(private httpClient: HttpClient) {}
   
-  createAutoVerzekering(autoVerzekering) {
+  createAutoVerzekering(autoVerzekering: any) {
     return this.httpClient.post(`${this.API_URL}/auto-verzekering/`, autoVerzekering);
   }
 }
