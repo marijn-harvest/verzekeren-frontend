@@ -14,17 +14,18 @@ export class LoginService {
   constructor(private http: HttpClient) { }
   
   authenticate(credentials, callback) {
-    const headers = new HttpHeaders(credentials ? {
-      authorization : 'Basic ' + btoa(credentials.username + ':' + credentials.password)
-    } : {});
+    const authorizationHeader = btoa(credentials.username + ':' + credentials.password);
+    localStorage.setItem('authorizationHeader', authorizationHeader);
 
-    this.http.get(`${this.API_URL}/user/`, {headers: headers}).subscribe(response => {
+    this.http.get(`${this.API_URL}/user/`).subscribe(response => {
       if (response['name']) {
         this.authenticated = true;
-      } else {
-        this.authenticated = false;
       }
       return callback && callback();
     });
+  }
+  
+  getAuthorizationHeader() {
+    return localStorage.getItem('authorizationHeader');
   }
 }
