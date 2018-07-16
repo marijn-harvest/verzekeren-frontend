@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { AutoVerzekeringCreateComponent } from './auto-verzekering-create/auto-verzekering-create.component';
 import { LoginComponent } from './login/login.component';
 import { AuthorizationInterceptor } from './authorization.interceptor';
+import { AuthGuardService } from './auth-guard.service';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { AuthorizationInterceptor } from './authorization.interceptor';
     AppRoutingModule
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: AuthorizationInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: AuthorizationInterceptor, multi: true },
+    AuthGuardService
   ],
   bootstrap: [AppComponent]
 })

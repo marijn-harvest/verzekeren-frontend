@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   credentials = {username: '', password: ''};
+  error = false;
   
   constructor(private loginService: LoginService, private router: Router) { }
 
@@ -16,9 +17,12 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    this.loginService.authenticate(this.credentials, () => {
-      this.router.navigateByUrl('/auto-verzekering');
+    this.loginService.authenticate(this.credentials, (error) => {
+      if(!error) {
+        this.router.navigateByUrl('/auto-verzekering');
+      } else {
+        this.error = true;
+      }
     });
-    return false;
   }
 }

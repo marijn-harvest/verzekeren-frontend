@@ -8,24 +8,26 @@ import { environment } from '../environments/environment';
 })
 export class LoginService {
   API_URL = environment.apiUrl;
-  
-  authenticated = false;
 
   constructor(private http: HttpClient) { }
   
   authenticate(credentials, callback) {
     const authorizationHeader = btoa(credentials.username + ':' + credentials.password);
-    localStorage.setItem('authorizationHeader', authorizationHeader);
+    sessionStorage.setItem('authorizationHeader', authorizationHeader);
 
     this.http.get(`${this.API_URL}/user/`).subscribe(response => {
-      if (response['name']) {
-        this.authenticated = true;
-      }
       return callback && callback();
+    }, error => {
+      sessionStorage.removeItem('authorizationHeader');
+      return callback && callback(true);
     });
   }
   
   getAuthorizationHeader() {
-    return localStorage.getItem('authorizationHeader');
+    return sessionStorage.getItem('authorizationHeader');
+  }
+  
+  isAuthenticated() {
+    return !!this.getAuthorizationHeader();
   }
 }
