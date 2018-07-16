@@ -6,11 +6,13 @@ import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { AutoVerzekeringCreateComponent } from './auto-verzekering-create/auto-verzekering-create.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AutoVerzekeringCreateComponent
+    AutoVerzekeringCreateComponent,
+    LoginComponent
   ],
   imports: [
     FormsModule,
