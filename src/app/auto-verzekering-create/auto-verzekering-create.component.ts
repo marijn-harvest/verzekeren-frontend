@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
-import { APIService } from  '../api.service';
+import { AutoVerzekeringService } from  '../auto-verzekering.service';
 
 @Component({
   selector: 'app-auto-verzekering-create',
@@ -11,13 +11,13 @@ import { APIService } from  '../api.service';
 export class AutoVerzekeringCreateComponent implements OnInit {
   autoVerzekering: any = {};
 
-  constructor(private  apiService:  APIService) { }
+  constructor(private autoVerzekeringService: AutoVerzekeringService) { }
 
   ngOnInit() {
   }
 
   public saveAutoVerzekering(form: NgForm) {
-    this.apiService.createAutoVerzekering(form).subscribe(response => {
+    this.autoVerzekeringService.createAutoVerzekering(form).subscribe(response => {
       console.log('test');
     });
   }
