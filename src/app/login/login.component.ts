@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
   login() {
     this.loginService.authenticate(this.credentials, (error) => {
       if(!error) {
-        this.router.navigateByUrl('/auto-verzekering');
+        this.router.navigate(['auto-verzekering']);
       } else {
         this.error = true;
       }
