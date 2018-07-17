@@ -9,12 +9,14 @@ import { AutoVerzekeringCreateComponent } from './auto-verzekering-create/auto-v
 import { LoginComponent } from './login/login.component';
 import { AuthorizationInterceptor } from './authorization.interceptor';
 import { AuthGuardService } from './auth-guard.service';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AutoVerzekeringCreateComponent,
-    LoginComponent
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     FormsModule,
