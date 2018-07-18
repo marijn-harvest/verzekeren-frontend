@@ -16,7 +16,7 @@ export class AutoVerzekeringCreateComponent implements OnInit {
   constructor(private autoVerzekeringService: AutoVerzekeringService) { }
 
   ngOnInit() {
-    this.autoVerzekeringService.getMyAutoVerzekering().subscribe(response => {
+    this.autoVerzekeringService.getMyAutoVerzekering().subscribe((response: any) => {
       if(response) {
         this.autoVerzekering.type = response.type;
         this.submitMessage = 'Wijzig auto verzekering';
