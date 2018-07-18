@@ -9,16 +9,25 @@ import { AutoVerzekeringService } from  '../auto-verzekering.service';
   styleUrls: ['./auto-verzekering-create.component.css']
 })
 export class AutoVerzekeringCreateComponent implements OnInit {
-  autoVerzekering: any = {};
+  autoVerzekering = {type: ''};
+  submitMessage = 'Vraag auto verzekering aan';
+  success = false;
 
   constructor(private autoVerzekeringService: AutoVerzekeringService) { }
 
   ngOnInit() {
+    this.autoVerzekeringService.getMyAutoVerzekering().subscribe(response => {
+      if(response) {
+        this.autoVerzekering.type = response.type;
+        this.submitMessage = 'Wijzig auto verzekering';
+      }
+    });
   }
 
   public saveAutoVerzekering(form: NgForm) {
-    this.autoVerzekeringService.createAutoVerzekering(form).subscribe(response => {
-      console.log('test');
+    this.autoVerzekeringService.saveAutoVerzekering(form).subscribe(response => {
+      this.submitMessage = 'Wijzig auto verzekering';
+      this.success = true;
     });
   }
 }
