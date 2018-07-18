@@ -5,7 +5,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from  '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
-import { AutoVerzekeringCreateComponent } from './auto-verzekering-create/auto-verzekering-create.component';
+import { AutoVerzekeringSaveComponent } from './auto-verzekering/auto-verzekering-save.component';
 import { LoginComponent } from './login/login.component';
 import { AuthorizationInterceptor } from './authorization.interceptor';
 import { AuthGuardService } from './auth-guard.service';
@@ -14,7 +14,7 @@ import { RegisterComponent } from './register/register.component';
 @NgModule({
   declarations: [
     AppComponent,
-    AutoVerzekeringCreateComponent,
+    AutoVerzekeringSaveComponent,
     LoginComponent,
     RegisterComponent
   ],

@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
-import { AutoVerzekeringService } from  '../auto-verzekering.service';
+import { AutoVerzekeringService } from  './auto-verzekering.service';
 
 @Component({
-  selector: 'app-auto-verzekering-create',
-  templateUrl: './auto-verzekering-create.component.html',
-  styleUrls: ['./auto-verzekering-create.component.css']
+  selector: 'app-auto-verzekering-save',
+  templateUrl: './auto-verzekering-save.component.html',
+  styleUrls: ['./auto-verzekering-save.component.css']
 })
-export class AutoVerzekeringCreateComponent implements OnInit {
+export class AutoVerzekeringSaveComponent implements OnInit {
   autoVerzekering = {type: ''};
   submitMessage = 'Vraag auto verzekering aan';
   success = false;

@@ -1,4 +1,4 @@
-import { AutoVerzekeringCreateComponent } from './auto-verzekering-create/auto-verzekering-create.component';
+import { AutoVerzekeringSaveComponent } from './auto-verzekering/auto-verzekering-save.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { AuthGuardService as AuthGuard } from './auth-guard.service';
@@ -10,7 +10,7 @@ const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent},
   { path: 'register', component: RegisterComponent },
-  { path: 'auto-verzekering', component: AutoVerzekeringCreateComponent, canActivate: [AuthGuard] }
+  { path: 'auto-verzekering', component: AutoVerzekeringSaveComponent, canActivate: [AuthGuard] }
 ];
 
 @NgModule({
