@@ -12,7 +12,7 @@ export class UserService {
   constructor(private http: HttpClient) { }
   
   register(user, callback) {
-    this.http.post(`${this.API_URL}/user/`, user).subscribe(response => {
+    this.http.post(`${this.API_URL}/user`, user).subscribe(response => {
       return callback && callback();
     }, error => {
       return callback && callback(true);

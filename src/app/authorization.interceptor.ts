@@ -9,11 +9,13 @@ export class AuthorizationInterceptor implements HttpInterceptor {
   constructor(public loginService: LoginService) {}
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    request = request.clone({
-      setHeaders: {
-        Authorization: `Basic ${this.loginService.getAuthorizationHeader()}`
-      }
-    });
+    if(this.loginService.isAuthenticated()) {
+        request = request.clone({
+        setHeaders: {
+          Authorization: `Basic ${this.loginService.getAuthorizationHeader()}`
+        }
+      });
+    }
 
     return next.handle(request);
   }

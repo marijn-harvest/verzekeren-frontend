@@ -15,7 +15,7 @@ export class LoginService {
     const authorizationHeader = btoa(credentials.username + ':' + credentials.password);
     sessionStorage.setItem('authorizationHeader', authorizationHeader);
 
-    this.http.get(`${this.API_URL}/user/`).subscribe(response => {
+    this.http.get(`${this.API_URL}/user`).subscribe(response => {
       return callback && callback();
     }, error => {
       sessionStorage.removeItem('authorizationHeader');

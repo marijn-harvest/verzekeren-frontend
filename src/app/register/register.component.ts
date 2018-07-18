@@ -9,7 +9,7 @@ import { UserService } from '../user.service';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  user = {username: '', password: ''};
+  user = {username: '', password: '', voornaam: '', achternaam: ''};
   error = false;
   
   constructor(private userService: UserService, public router: Router) { }

@@ -12,6 +12,6 @@ export class AutoVerzekeringService {
   constructor(private httpClient: HttpClient) {}
   
   createAutoVerzekering(autoVerzekering: any) {
-    return this.httpClient.post(`${this.API_URL}/auto-verzekering/`, autoVerzekering);
+    return this.httpClient.post(`${this.API_URL}/auto-verzekering`, autoVerzekering);
   }
 }
