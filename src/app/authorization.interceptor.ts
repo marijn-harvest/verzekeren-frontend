@@ -10,9 +10,13 @@ export class AuthorizationInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     if(this.loginService.isAuthenticated()) {
-        request = request.clone({
+      const username = sessionStorage.getItem('username');
+      const password = sessionStorage.getItem('password');
+      const authorizationHeader = btoa(username + ':' + password);
+    
+      request = request.clone({
         setHeaders: {
-          Authorization: `Basic ${this.loginService.getAuthorizationHeader()}`
+          Authorization: `Basic ${authorizationHeader}`
         }
       });
     }

@@ -1,0 +1,22 @@
+<div class="alert alert-danger" [hidden]="!error">
+	Er was een probleem bij het wijzigen. Probeer het nog een keer.
+</div>
+<form role="form" (submit)="editUser()">
+	<div class="form-group">
+		<label for="username">Gebruikersnaam:</label>
+		<input type="text" class="form-control" id="username" name="username" [(ngModel)]="user.username" />
+	</div>
+	<div class="form-group">
+		<label for="password">Wachtwoord:</label>
+		<input type="password" class="form-control" id="password" name="password" [(ngModel)]="user.password" />
+	</div>
+	<div class="form-group">
+		<label for="voornaam">Voornaam:</label>
+		<input type="text" class="form-control" id="voornaam" name="voornaam" [(ngModel)]="user.voornaam" />
+	</div>
+	<div class="form-group">
+		<label for="achternaam">Achternaam:</label>
+		<input type="text" class="form-control" id="achternaam" name="achternaam" [(ngModel)]="user.achternaam" />
+	</div>
+	<button type="submit" class="btn btn-primary">Wijzigen</button>
+</form>

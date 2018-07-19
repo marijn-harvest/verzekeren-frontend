@@ -12,10 +12,9 @@ export class LoginService {
   constructor(private http: HttpClient) { }
   
   authenticate(credentials, callback) {
-    const authorizationHeader = btoa(credentials.username + ':' + credentials.password);
-    sessionStorage.setItem('authorizationHeader', authorizationHeader);
+    this.storeCredentials(credentials.username, credentials.password);
 
-    this.http.get(`${this.API_URL}/user`).subscribe(response => {
+    this.http.get(`${this.API_URL}/principal`).subscribe(response => {
       return callback && callback();
     }, error => {
       sessionStorage.removeItem('authorizationHeader');
@@ -23,11 +22,16 @@ export class LoginService {
     });
   }
   
-  getAuthorizationHeader() {
-    return sessionStorage.getItem('authorizationHeader');
+  storeCredentials(username, password) {
+    if(username) {
+      sessionStorage.setItem('username', username);
+    }
+    if(password) {
+      sessionStorage.setItem('password', password);
+    }
   }
   
   isAuthenticated() {
-    return !!this.getAuthorizationHeader();
+    return !!sessionStorage.getItem('username') && !!sessionStorage.getItem('password');
   }
 }

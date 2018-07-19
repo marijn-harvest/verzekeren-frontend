@@ -18,4 +18,16 @@ export class UserService {
       return callback && callback(true);
     });
   }
+  
+  getLoggedInUser() {
+    return this.http.get(`${this.API_URL}/user`);
+  }
+  
+  editUser(user, callback) {
+    this.http.put(`${this.API_URL}/user`, user).subscribe(response => {
+      return callback && callback();
+    }, error => {
+      return callback && callback(true);
+    });
+  }
 }

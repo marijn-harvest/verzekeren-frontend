@@ -10,13 +10,15 @@ import { LoginComponent } from './login/login.component';
 import { AuthorizationInterceptor } from './authorization.interceptor';
 import { AuthGuardService } from './auth-guard.service';
 import { RegisterComponent } from './user/register.component';
+import { UserEditComponent } from './user/user-edit.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AutoVerzekeringSaveComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    UserEditComponent
   ],
   imports: [
     FormsModule,
