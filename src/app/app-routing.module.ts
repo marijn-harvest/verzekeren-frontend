@@ -1,6 +1,6 @@
 import { AutoVerzekeringSaveComponent } from './auto-verzekering/auto-verzekering-save.component';
 import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
+import { RegisterComponent } from './user/register.component';
 import { AuthGuardService as AuthGuard } from './auth-guard.service';
 
 import { NgModule } from '@angular/core';

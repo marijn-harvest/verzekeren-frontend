@@ -9,7 +9,7 @@ import { AutoVerzekeringSaveComponent } from './auto-verzekering/auto-verzekerin
 import { LoginComponent } from './login/login.component';
 import { AuthorizationInterceptor } from './authorization.interceptor';
 import { AuthGuardService } from './auth-guard.service';
-import { RegisterComponent } from './register/register.component';
+import { RegisterComponent } from './user/register.component';
 
 @NgModule({
   declarations: [
