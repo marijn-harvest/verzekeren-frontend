@@ -17,7 +17,8 @@ export class LoginService {
     this.http.get(`${this.API_URL}/principal`).subscribe(response => {
       return callback && callback();
     }, error => {
-      sessionStorage.removeItem('authorizationHeader');
+      sessionStorage.removeItem('username');
+      sessionStorage.removeItem('password');
       return callback && callback(true);
     });
   }
