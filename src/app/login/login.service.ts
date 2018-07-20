@@ -10,7 +10,7 @@ export class LoginService {
   API_URL = environment.apiUrl;
 
   constructor(private http: HttpClient) { }
-  
+
   authenticate(credentials, callback) {
     this.storeCredentials(credentials.username, credentials.password);
 
@@ -21,16 +21,16 @@ export class LoginService {
       return callback && callback(true);
     });
   }
-  
+
   storeCredentials(username, password) {
-    if(username) {
+    if (username) {
       sessionStorage.setItem('username', username);
     }
-    if(password) {
+    if (password) {
       sessionStorage.setItem('password', password);
     }
   }
-  
+
   isAuthenticated() {
     return !!sessionStorage.getItem('username') && !!sessionStorage.getItem('password');
   }

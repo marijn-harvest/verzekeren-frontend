@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
-import { AutoVerzekeringService } from  './auto-verzekering.service';
+import { AutoVerzekeringService } from './auto-verzekering.service';
 
 @Component({
   selector: 'app-auto-verzekering-save',
@@ -17,7 +17,7 @@ export class AutoVerzekeringSaveComponent implements OnInit {
 
   ngOnInit() {
     this.autoVerzekeringService.getMyAutoVerzekering().subscribe((response: any) => {
-      if(response) {
+      if (response) {
         this.autoVerzekering.type = response.type;
         this.submitMessage = 'Wijzig auto verzekering';
       }

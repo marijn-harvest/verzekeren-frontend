@@ -12,12 +12,12 @@ import { LoginService } from '../login/login.service';
 export class UserEditComponent implements OnInit {
   user = {username: '', password: '', voornaam: '', achternaam: ''};
   error = false;
-  
+
   constructor(private userService: UserService, private loginService: LoginService, public router: Router) { }
 
   ngOnInit() {
     this.userService.getLoggedInUser().subscribe((response: any) => {
-      if(response) {
+      if (response) {
         this.user = response;
       }
     });
@@ -25,7 +25,7 @@ export class UserEditComponent implements OnInit {
 
   editUser() {
     this.userService.editUser(this.user, (error) => {
-      if(error) {
+      if (error) {
         this.error = true;
       } else {
         this.loginService.storeCredentials(this.user.username, this.user.password);

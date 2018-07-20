@@ -11,15 +11,15 @@ import { UserService } from './user.service';
 export class RegisterComponent implements OnInit {
   user = {username: '', password: '', voornaam: '', achternaam: ''};
   error = false;
-  
+
   constructor(private userService: UserService, public router: Router) { }
 
   ngOnInit() {
   }
 
-  register() {    
+  register() {
     this.userService.register(this.user, (error) => {
-      if(!error) {
+      if (!error) {
         this.router.navigate(['login']);
       } else {
         this.error = true;

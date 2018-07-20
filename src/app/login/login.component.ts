@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
   credentials = {username: '', password: ''};
   error = false;
-  
+
   constructor(private loginService: LoginService, private router: Router) { }
 
   ngOnInit() {
@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
 
   login() {
     this.loginService.authenticate(this.credentials, (error) => {
-      if(!error) {
+      if (!error) {
         this.router.navigate(['auto-verzekering']);
       } else {
         this.error = true;
