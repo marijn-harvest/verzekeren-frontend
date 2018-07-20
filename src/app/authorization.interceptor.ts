@@ -6,10 +6,10 @@ import { Observable } from 'rxjs';
 @Injectable()
 export class AuthorizationInterceptor implements HttpInterceptor {
 
-  constructor(public loginService: LoginService) {}
+  constructor() {}
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    if (this.loginService.isAuthenticated()) {
+    if (LoginService.isAuthenticated()) {
       const username = sessionStorage.getItem('username');
       const password = sessionStorage.getItem('password');
       const authorizationHeader = btoa(username + ':' + password);

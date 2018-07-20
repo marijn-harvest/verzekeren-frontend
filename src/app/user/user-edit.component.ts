@@ -13,7 +13,7 @@ export class UserEditComponent implements OnInit {
   user = {username: '', password: '', voornaam: '', achternaam: ''};
   error = false;
 
-  constructor(private userService: UserService, private loginService: LoginService, public router: Router) { }
+  constructor(private userService: UserService, public router: Router) { }
 
   ngOnInit() {
     this.userService.getLoggedInUser().subscribe((response: any) => {
@@ -28,7 +28,7 @@ export class UserEditComponent implements OnInit {
       if (error) {
         this.error = true;
       } else {
-        this.loginService.storeCredentials(this.user.username, this.user.password);
+        LoginService.storeCredentials(this.user.username, this.user.password);
       }
     });
   }

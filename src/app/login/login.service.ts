@@ -11,19 +11,7 @@ export class LoginService {
 
   constructor(private http: HttpClient) { }
 
-  authenticate(credentials, callback) {
-    this.storeCredentials(credentials.username, credentials.password);
-
-    this.http.get(`${this.API_URL}/principal`).subscribe(response => {
-      return callback && callback();
-    }, error => {
-      sessionStorage.removeItem('username');
-      sessionStorage.removeItem('password');
-      return callback && callback(true);
-    });
-  }
-
-  storeCredentials(username, password) {
+  public static storeCredentials(username, password) {
     if (username) {
       sessionStorage.setItem('username', username);
     }
@@ -32,7 +20,19 @@ export class LoginService {
     }
   }
 
-  isAuthenticated() {
+  public static isAuthenticated() {
     return !!sessionStorage.getItem('username') && !!sessionStorage.getItem('password');
+  }
+
+  authenticate(credentials, callback) {
+    LoginService.storeCredentials(credentials.username, credentials.password);
+
+    this.http.get(`${this.API_URL}/principal`).subscribe(() => {
+      return callback && callback();
+    }, () => {
+      sessionStorage.removeItem('username');
+      sessionStorage.removeItem('password');
+      return callback && callback(true);
+    });
   }
 }
