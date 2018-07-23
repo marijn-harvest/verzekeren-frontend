@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { environment } from '../../environments/environment';
 
@@ -11,27 +11,20 @@ export class LoginService {
 
   constructor(private http: HttpClient) { }
 
-  public static storeCredentials(username, password) {
-    if (username) {
-      sessionStorage.setItem('username', username);
-    }
-    if (password) {
-      sessionStorage.setItem('password', password);
-    }
-  }
-
   public static isAuthenticated() {
-    return !!sessionStorage.getItem('username') && !!sessionStorage.getItem('password');
+    return sessionStorage.getItem('isAuthenticated') === 'true';
   }
 
   authenticate(credentials, callback) {
-    LoginService.storeCredentials(credentials.username, credentials.password);
+    const authorizationHeader = btoa(credentials.username + ':' + credentials.password);
 
-    this.http.get(`${this.API_URL}/principal`).subscribe(() => {
+    this.http.get(`${this.API_URL}/principal`, { headers: new HttpHeaders({
+        'Authorization': `Basic ${authorizationHeader}`
+      }) }).subscribe(() => {
+        sessionStorage.setItem('isAuthenticated', 'true');
       return callback && callback();
     }, () => {
-      sessionStorage.removeItem('username');
-      sessionStorage.removeItem('password');
+      sessionStorage.setItem('isAuthenticated', 'false');
       return callback && callback(true);
     });
   }

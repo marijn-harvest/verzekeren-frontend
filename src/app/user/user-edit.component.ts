@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { UserService } from './user.service';
-import { LoginService } from '../login/login.service';
 
 @Component({
   selector: 'app-user-edit',
@@ -27,8 +26,6 @@ export class UserEditComponent implements OnInit {
     this.userService.editUser(this.user, (error) => {
       if (error) {
         this.error = true;
-      } else {
-        LoginService.storeCredentials(this.user.username, this.user.password);
       }
     });
   }

@@ -5,7 +5,7 @@ import { LoginService } from './login/login.service';
 @Injectable()
 export class AuthGuardService implements CanActivate {
 
-  constructor(public router: Router) {}
+  constructor(private router: Router) {}
 
   canActivate(): boolean {
     if (!LoginService.isAuthenticated()) {
