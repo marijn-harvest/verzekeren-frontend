@@ -11,6 +11,7 @@ import { AuthorizationInterceptor } from './authorization.interceptor';
 import { AuthGuardService } from './auth-guard.service';
 import { RegisterComponent } from './user/register.component';
 import { UserEditComponent } from './user/user-edit.component';
+import { UiModule } from './ui/ui.module';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { UserEditComponent } from './user/user-edit.component';
     FormsModule,
     BrowserModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    UiModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthorizationInterceptor, multi: true },

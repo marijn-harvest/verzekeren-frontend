@@ -5,10 +5,24 @@ Vraag auto verzekering aan
 <div [hidden]="!success">
 	De verzekering is succesvol opgeslagen.
 </div>
-<form #autoVerzekeringForm="ngForm" (ngSubmit)="saveAutoVerzekering(autoVerzekeringForm.value)">	
-	<input [ngModel]="autoVerzekering.type" type="radio" value="WA" name="type" /> WA
-	<input [ngModel]="autoVerzekering.type" type="radio" value="WA-beperkt" name="type" /> WA Beperkt
-	<input [ngModel]="autoVerzekering.type" type="radio" value="WA-volledig" name="type" /> WA Volledig
-	
-	<button type="submit">{{submitMessage}}</button>
+<form #autoVerzekeringForm="ngForm" (ngSubmit)="saveAutoVerzekering(autoVerzekeringForm.value)">
+  <div class="form-group">
+    <div class="form-check-inline">
+      <label class="form-check-label">
+        <input [ngModel]="autoVerzekering.type" type="radio" class="form-check-input" name="type" value="WA">WA
+      </label>
+    </div>
+    <div class="form-check-inline">
+      <label class="form-check-label">
+        <input [ngModel]="autoVerzekering.type" type="radio" class="form-check-input" name="type" value="WA-beperkt">WA Beperkt
+      </label>
+    </div>
+    <div class="form-check-inline disabled">
+      <label class="form-check-label">
+        <input [ngModel]="autoVerzekering.type" type="radio" class="form-check-input" name="type" value="WA-volledig">WA Volledig
+      </label>
+    </div>
+  </div>
+
+	<button type="submit" class="btn btn-primary">{{submitMessage}}</button>
 </form>
