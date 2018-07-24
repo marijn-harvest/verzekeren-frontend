@@ -17,6 +17,7 @@ export class AuthorizationInterceptor implements HttpInterceptor {
 
     return next.handle(request).pipe(catchError( err => {
       if (err.status === 401) {
+        sessionStorage.setItem('isAuthenticated', 'false');
         this.router.navigate(['login']);
         return EMPTY;
       } else {
